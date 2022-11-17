@@ -28,7 +28,22 @@ public class DaoLogin extends DaoBase{
 
         return credencialUsuario;
     }
-    public void createCredentialCliente(){
+    public void createCredentialCliente(Credentianls credentianl) {
 
+        String sql = "INSERT INTO bi_corp_business.credentials (nro_documento, password, hashedPassword, tipoUsuario)" +
+                "VALUES (?,?,?,2);";
+
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, credentianl.getNumeroDocumento());
+            pstmt.setInt(2, credentianl.getTipoUsuario());
+
+            pstmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
+
 }

@@ -19,7 +19,7 @@ public class ServletLogin extends HttpServlet {
 
         switch(action){
             case "loginform":
-                view = request.getRequestDispatcher("login/loginForm.jsp");
+                view = request.getRequestDispatcher("Login.jsp");
                 view.forward(request, response);
                 break;
             case "logout":
