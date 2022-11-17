@@ -1,4 +1,4 @@
-package com.example.lab7_20200334.beans;
+package com.example.lab10_iweb.Beans;
 
 public class Clientes {
 

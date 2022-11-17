@@ -1,4 +1,4 @@
-package com.example.lab7_20200334.beans;
+package com.example.lab10_iweb.Beans;
 
 public class Contratos {
 
@@ -18,11 +18,11 @@ public class Contratos {
         this.nroDeContrato = nroDeContrato;
     }
 
-    public int getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(int estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
@@ -34,11 +34,11 @@ public class Contratos {
         this.mesesEnEseEstado = mesesEnEseEstado;
     }
 
-    public int getDivisa() {
+    public String getDivisa() {
         return divisa;
     }
 
-    public void setDivisa(int divisa) {
+    public void setDivisa(String divisa) {
         this.divisa = divisa;
     }
 
@@ -46,9 +46,9 @@ public class Contratos {
 
     private int idCliente;
     private String nroDeContrato;
-    private int estado;
+    private String estado;
     private int mesesEnEseEstado ;
-    private int divisa;
+    private String divisa;
    
 
 }

@@ -12,7 +12,7 @@ public abstract  class DaoBase {
         }
 
         String user = "root";
-        String pass = "123456";
+        String pass = "root";
         String url = "jdbc:mysql://localhost:3306/bi_corp_business?serverTimeZone=America/Lima";
 
         return DriverManager.getConnection(url, user, pass);
