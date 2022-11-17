@@ -12,7 +12,7 @@ public class DaoLogin extends DaoBase{
 
 
         try(Connection conn = getConnection();
-            PreparedStatement pstm = conn.prepareStatement("SELECT * FROM bi_corp_business.credentials WHERE nro_documento= ? and password= ?;")){
+            PreparedStatement pstm = conn.prepareStatement("SELECT * FROM bi_corp_business.credentials WHERE nro_documento= ? and hashedPassword= sha2(?,256);")){
 
             pstm.setString(1, nroDoc);
             pstm.setString(1,password);
