@@ -85,6 +85,16 @@
                     <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
                     <label for="floatingPassword">Password</label>
                 </div>
+
+                <% if (session.getAttribute("msg") != null) { %>
+
+                <div id="validationServer03Feedback" class="invalid-feedback" style="display: block; margin-bottom: 10px;">
+                <%=session.getAttribute("msg")%>
+                </div>
+                <% session.removeAttribute("msg"); %>
+                <% } %>
+
+
                 <button class="w-100 btn btn-lg btn-primary" type="submit" control-id="ControlID-4">Sign in</button>
                 <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
             </form>

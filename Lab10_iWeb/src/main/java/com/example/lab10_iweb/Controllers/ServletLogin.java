@@ -32,19 +32,21 @@ public class ServletLogin extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+         String nroDocumento = request.getParameter("username");
+         String password = request.getParameter("password");
         DaoLogin loginDao = new DaoLogin();
-         String nroDocumento = request.getParameter("inputDocument");
-         String password = request.getParameter("inputPassword");
 
         Credentianls crendencial = loginDao.buscarUsuario(nroDocumento,password);
-
+        HttpSession session = request.getSession();
         if(crendencial != null){
-            HttpSession session = request.getSession();
-            session.setAttribute("usuarioSession",crendencial);
+            session.setAttribute("usuarioLogueado",crendencial);
 
-            response.sendRedirect(request.getContextPath());
+            response.sendRedirect(request.getContextPath() + "/ClienteServlet");
         } else {
-            response.sendRedirect(request.getContextPath()+"/LoginServlet?error");
+            session.setAttribute("msg","Datos erroneos");
+            RequestDispatcher requestDispatcher= request.getRequestDispatcher("Login.jsp");
+            requestDispatcher.forward(request,response);
         }
 
 

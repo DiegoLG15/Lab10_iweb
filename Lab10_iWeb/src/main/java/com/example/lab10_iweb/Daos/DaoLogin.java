@@ -14,7 +14,8 @@ public class DaoLogin extends DaoBase{
         try(Connection conn = getConnection();
             PreparedStatement pstm = conn.prepareStatement("SELECT * FROM bi_corp_business.credentials WHERE nro_documento= ? and password= ?;")){
 
-            pstm.setInt(1, Integer.parseInt(nroDoc));
+            pstm.setString(1, nroDoc);
+            pstm.setString(1,password);
             try (ResultSet rs = pstm.executeQuery();){
                 if(rs.next()){
                     credencialUsuario = new Credentianls();
