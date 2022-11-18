@@ -39,10 +39,16 @@ public class ServletLogin extends HttpServlet {
 
         Credentianls crendencial = loginDao.buscarUsuario(nroDocumento,password);
         HttpSession session = request.getSession();
+
+
         if(crendencial != null){
             session.setAttribute("usuarioLogueado",crendencial);
+            if(crendencial.getTipoUsuario()==1){
+                response.sendRedirect(request.getContextPath() + "/ServletAdmin");
+            } else if(crendencial.getTipoUsuario()==2){
+                response.sendRedirect(request.getContextPath() + "/ClienteServlet");
+            }
 
-            response.sendRedirect(request.getContextPath() + "/ServletAdmin");
         } else {
             session.setAttribute("msg","Datos erroneos");
             RequestDispatcher requestDispatcher= request.getRequestDispatcher("Login.jsp");

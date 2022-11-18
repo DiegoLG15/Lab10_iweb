@@ -1,7 +1,8 @@
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="com.example.lab10_iweb.Beans.Clientes" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    ArrayList<String> listaClientes = (ArrayList<String>) request.getAttribute("clientes");
+    ArrayList<Clientes> listaClientes = (ArrayList<Clientes>) request.getAttribute("listarClientes");
 %>
 <html>
     <head>
@@ -10,7 +11,6 @@
         <title>LAB 9</title>
     </head>
     <body>
-        <jsp:include page="/includes/navbar.jsp"/>
         <div class='container'>
             <div class="row mb-4">
                 <div class="col"></div>
@@ -20,8 +20,8 @@
                         <div class="form-group">
                             <label>Nro de Documento</label>
                             <select name="clientes" class="form-control">
-                                <%for(String cliente:listaClientes){%>
-                                <option value="<%=cliente%>"><%=cliente%></option>
+                                <%for(Clientes cliente:listaClientes){%>
+                                <option value="<%=cliente.getNumeroDocumento()%>"><%=cliente.getNumeroDocumento()%></option>
                                 <% } %>
                             </select>
                         </div>
@@ -32,7 +32,7 @@
                         <div class="form-group">
                             <label>Tipo de Usuario</label>
                             <select name="tipoUsuario" class="form-control">
-                                <option value="">2</option>
+                                <option value="2">2</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Guardar</button>

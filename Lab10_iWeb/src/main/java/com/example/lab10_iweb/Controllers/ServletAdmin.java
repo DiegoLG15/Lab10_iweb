@@ -14,14 +14,14 @@ import java.util.ArrayList;
 public class ServletAdmin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action") == null ? "lista" : request.getParameter("action");
+        String action = request.getParameter("action") == null ? "crear" : request.getParameter("action");
         RequestDispatcher view;
         Credentianls credentianls;
         DaoCliente daoCliente = new DaoCliente();
 
         switch (action){
             case "crear":
-                request.setAttribute("clientes", daoCliente.listarClientes());
+                request.setAttribute("listarClientes", daoCliente.listarClientes());
                 view = request.getRequestDispatcher("/newCredential.jsp");
                 view.forward(request, response);
                 break;
@@ -31,7 +31,7 @@ public class ServletAdmin extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action") == null ? "lista" : request.getParameter("action");
+        String action = request.getParameter("action") == null ? "guardar" : request.getParameter("action");
         RequestDispatcher view;
         ArrayList<String> clientes = new ArrayList<>();
         DaoLogin daoLogin = new DaoLogin();

@@ -20,7 +20,7 @@ public class DaoCliente extends DaoBase{
 
         try(Connection conn = getConnection();
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SSELECT * FROM bi_corp_business.jm_client_bii where g4093_nro_id not in (select nro_documento from credentials);")) {
+            ResultSet rs = st.executeQuery("SELECT * FROM bi_corp_business.jm_client_bii where g4093_nro_id not in (select nro_documento from credentials);")) {
 
             while(rs.next()){
                 Clientes cliente = new Clientes();
