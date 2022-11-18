@@ -22,7 +22,7 @@ public class ServletAdmin extends HttpServlet {
         switch (action){
             case "crear":
                 request.setAttribute("clientes", daoCliente.listarClientes());
-                view = request.getRequestDispatcher("/newCredencial.jsp");
+                view = request.getRequestDispatcher("/newCredential.jsp");
                 view.forward(request, response);
                 break;
         }
@@ -47,7 +47,7 @@ public class ServletAdmin extends HttpServlet {
                 credentianls.setTipoUsuario(Integer.parseInt(tipoUsuario));
                 daoLogin.createCredentialCliente(credentianls,password);
 
-                response.sendRedirect(request.getContextPath() + "/JobServlet");
+                response.sendRedirect(request.getContextPath() + "/ServletAdmin");
                 break;
         }
 
