@@ -2,14 +2,16 @@ package com.example.lab10_iweb.Dtos;
 
 public class MaxExpectedLossDto {
     public float getMaxExpectedLoss() {
-        return MaxExpectedLoss;
+
+        return maxExpectedLoss;
     }
 
     public void setMaxExpectedLoss(float maxExpectedLoss) {
-        MaxExpectedLoss = maxExpectedLoss;
+
+        this.maxExpectedLoss = maxExpectedLoss;
     }
 
-    private float MaxExpectedLoss;
+    private float maxExpectedLoss;
 
 
 }
