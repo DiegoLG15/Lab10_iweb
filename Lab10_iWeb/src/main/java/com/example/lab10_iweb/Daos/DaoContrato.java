@@ -87,8 +87,9 @@ public class DaoContrato extends DaoBase {
 
 
 
-    public float getMaxExpectedLoss(int idCliente ) {
-        float maxexpectedloss = 0.0f;
+    public MaxExpectedLossDto getMaxExpectedLoss(int idCliente ) {
+
+        MaxExpectedLossDto maxExpectedLossDto = new MaxExpectedLossDto();
 
         try(Connection conn = getConnection();
             PreparedStatement pstm = conn.prepareStatement("SELECT idJM_VALUES, max(valores.pd_value*valores.lgd_value*(1-valores.recovery_rate)),contratos.g6789_contract,cliente.g4093_nro_id   FROM bi_corp_business.jm_values  valores\n" +
@@ -100,7 +101,6 @@ public class DaoContrato extends DaoBase {
 
             try (ResultSet rs = pstm.executeQuery()){
                 if(rs.next()){
-                    MaxExpectedLossDto maxExpectedLossDto = new MaxExpectedLossDto();
                     maxExpectedLossDto.setMaxExpectedLoss(rs.getFloat(2));
                 }
             }
@@ -108,8 +108,7 @@ public class DaoContrato extends DaoBase {
             e.printStackTrace();
         }
 
-
-        return maxexpectedloss;
+       return maxExpectedLossDto;
     }
 
 
