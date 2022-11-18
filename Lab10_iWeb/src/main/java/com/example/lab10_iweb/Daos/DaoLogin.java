@@ -12,10 +12,10 @@ public class DaoLogin extends DaoBase{
 
 
         try(Connection conn = getConnection();
-            PreparedStatement pstm = conn.prepareStatement("SELECT * FROM bi_corp_business.credentials WHERE nro_documento= ? and hashedPassword= sha2(?,256);")){
+            PreparedStatement pstm = conn.prepareStatement("SELECT * FROM bi_corp_business.credentials WHERE nro_documento= ? and hashedPassword= SHA2(?,256);")){
 
             pstm.setString(1, nroDoc);
-            pstm.setString(1,password);
+            pstm.setString(2,password);
             try (ResultSet rs = pstm.executeQuery();){
                 if(rs.next()){
                     credencialUsuario = new Credentianls();
@@ -29,16 +29,18 @@ public class DaoLogin extends DaoBase{
 
         return credencialUsuario;
     }
-    public void createCredentialCliente(Credentianls credentianl) {
+    public void createCredentialCliente(Credentianls credentianl, String password) {
 
         String sql = "INSERT INTO bi_corp_business.credentials (nro_documento, password, hashedPassword, tipoUsuario)" +
-                "VALUES (?,?,?,2);";
+                "VALUES (?,?,SHA2(?,256),?);";
 
         try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, credentianl.getNumeroDocumento());
-            pstmt.setInt(2, credentianl.getTipoUsuario());
+            pstmt.setString(2,password);
+            pstmt.setString(3,password);
+            pstmt.setInt(4, credentianl.getTipoUsuario());
 
             pstmt.executeUpdate();
 

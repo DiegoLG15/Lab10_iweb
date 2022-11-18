@@ -42,7 +42,7 @@ public class ServletLogin extends HttpServlet {
         if(crendencial != null){
             session.setAttribute("usuarioLogueado",crendencial);
 
-            response.sendRedirect(request.getContextPath() + "/ClienteServlet");
+            response.sendRedirect(request.getContextPath() + "/ServletAdmin");
         } else {
             session.setAttribute("msg","Datos erroneos");
             RequestDispatcher requestDispatcher= request.getRequestDispatcher("Login.jsp");
