@@ -7,18 +7,6 @@
   </button>
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <ul class="navbar-nav">
-      <li class="nav-item" >
-        <a class="nav-link" href="<%=request.getContextPath()%>/ClienteServlet?action=datos">Mis datos</a>
-      </li>
-      <li class="nav-item" >
-        <a class="nav-link" href="<%=request.getContextPath()%>/ClienteServlet?action=contratos">Mis contratos</a>
-      </li>
-      <li class="nav-item" >
-        <a class="nav-link" href="<%=request.getContextPath()%>/ClienteServlet?action=estado">Contratos por estado</a>
-      </li>
-      <li class="nav-item" >
-        <a class="nav-link" href="<%=request.getContextPath()%>/ClienteServlet?action=loss">Expected Loss</a>
-      </li>
       <% if (session.getAttribute("usuarioLogueado") == null){%>
       <li class="nav-item">
         <a class="nav-link" href="<%=request.getContextPath()%>/ServletLogin">(Iniciar sesión)</a>

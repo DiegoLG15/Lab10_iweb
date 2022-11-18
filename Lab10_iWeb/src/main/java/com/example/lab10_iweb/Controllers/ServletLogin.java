@@ -19,11 +19,12 @@ public class ServletLogin extends HttpServlet {
 
         switch(action){
             case "loginform":
-                view = request.getRequestDispatcher("Login.jsp");
+                view = request.getRequestDispatcher("index.jsp");
                 view.forward(request, response);
                 break;
             case "logout":
                 HttpSession session = request.getSession();
+                session.removeAttribute("usuarioLogueado");
                 session.invalidate();
                 response.sendRedirect(request.getContextPath());
                 break;
@@ -51,7 +52,7 @@ public class ServletLogin extends HttpServlet {
 
         } else {
             session.setAttribute("msg","Datos erroneos");
-            RequestDispatcher requestDispatcher= request.getRequestDispatcher("Login.jsp");
+            RequestDispatcher requestDispatcher= request.getRequestDispatcher("index.jsp");
             requestDispatcher.forward(request,response);
         }
 

@@ -11,6 +11,7 @@
         <title>LAB 9</title>
     </head>
     <body>
+        <jsp:include page="/includes/navbarAdmin.jsp"/>
         <div class='container'>
             <div class="row mb-4">
                 <div class="col"></div>
